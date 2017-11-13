@@ -1,0 +1,17 @@
+# IDEA
+*.iml
+/.idea/workspace.xml
+/.idea/libraries
+
+# Build files
+.gradle
+/local.properties
+/build
+.externalNativeBuild
+
+# Other
+/captures
+/tmp
+
+# MacOS
+.DS_Store
