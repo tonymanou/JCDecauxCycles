@@ -1,6 +1,7 @@
 package com.tonymanou.jcdecauxcycles
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.tonymanou.jcdecauxcycles.model.Contract
@@ -10,9 +11,23 @@ import com.tonymanou.jcdecauxcycles.view.StationListFragment
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_ALREADY_LAUNCHED = "alreadyLaunched"
+        const val EXTRA_STATE = "state"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (savedInstanceState?.containsKey(EXTRA_ALREADY_LAUNCHED) != true) {
+            displayContractList()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle?) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        outState.putBoolean(EXTRA_ALREADY_LAUNCHED, true)
     }
 
     private fun displayContractList() {
@@ -45,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     private fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.root_frame, fragment)
+                .addToBackStack(null)
                 .commit()
     }
 }
