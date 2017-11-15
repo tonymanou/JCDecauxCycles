@@ -1,3 +1,29 @@
 <resources>
+
     <string name="app_name">JCDecauxCycles</string>
+
+    <!-- Station details -->
+    <string name="station_details_title">Station details</string>
+    <string name="station_static_details_title">Static data</string>
+    <string name="station_static_details_name">Name</string>
+    <string name="station_static_details_number">Number</string>
+    <string name="station_static_details_address">Address</string>
+    <string name="station_static_details_position">Position</string>
+    <string name="station_static_details_position_text" translatable="false">(%1$f ; %2$f)</string>
+    <string name="station_static_details_contract">Contract</string>
+    <string name="station_static_details_bonus">Bonus</string>
+    <string name="station_dynamic_details_title">Dynamic data</string>
+    <string name="station_dynamic_details_status">Status</string>
+    <string name="station_dynamic_details_bike_stands">Bike stands</string>
+    <string name="station_dynamic_details_available_stands">Available stands</string>
+    <string name="station_dynamic_details_available_bikes">Available bikes</string>
+    <string name="station_dynamic_details_last_update">Last update</string>
+
+    <!-- Misc -->
+    <string name="bonus_yes">yes</string>
+    <string name="bonus_no">no</string>
+    <string name="station_open">open</string>
+    <string name="station_closed">closed</string>
+    <string name="placeholder" translatable="false">…</string>
+
 </resources>

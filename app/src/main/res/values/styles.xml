@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="DetailsTitle" parent="TextAppearance.AppCompat.Title" />
+
+    <style name="DetailsSubhead" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="DetailsItemTitle" parent="TextAppearance.AppCompat.Body1" />
+
 </resources>
