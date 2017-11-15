@@ -3,6 +3,7 @@ package com.tonymanou.jcdecauxcycles
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import com.tonymanou.jcdecauxcycles.view.ContractListFragment
 import com.tonymanou.jcdecauxcycles.view.StationDetailsFragment
 
 class MainActivity : AppCompatActivity() {
@@ -10,6 +11,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
+
+    private fun displayContractList() {
+        val fragment = ContractListFragment()
+        setTitle(R.string.contract_list_title)
+        showFragment(fragment)
     }
 
     private fun displayStationDetails(stationNumber: Int, contractName: String) {
