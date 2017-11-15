@@ -1,5 +1,7 @@
 package com.tonymanou.jcdecauxcycles.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -8,7 +10,35 @@ data class Contract(
         @SerializedName("commercial_name") val commercialName: String,
         @SerializedName("country_code") val countryCode: String,
         @SerializedName("cities") val cities: Array<String>
-) {
+) : Parcelable {
+
+    constructor(parcel: Parcel) : this(
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.createStringArray())
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(commercialName)
+        parcel.writeString(countryCode)
+        parcel.writeStringArray(cities)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Contract> {
+        override fun createFromParcel(parcel: Parcel): Contract {
+            return Contract(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Contract?> {
+            return arrayOfNulls(size)
+        }
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

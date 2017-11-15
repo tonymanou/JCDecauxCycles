@@ -6,6 +6,10 @@
     <string name="contract_list_title">Contract list</string>
     <string name="contract_list_helper_text">Please select a contract:</string>
 
+    <!-- Station list -->
+    <string name="station_list_title">Station list</string>
+    <string name="station_list_helper_text">Please select a station:</string>
+
     <!-- Station details -->
     <string name="station_details_title">Station details</string>
     <string name="station_static_details_title">Static data</string>
