@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.tonymanou.jcdecauxcycles.MainActivity
 import com.tonymanou.jcdecauxcycles.R
 import com.tonymanou.jcdecauxcycles.adapter.StationAdapter
 import com.tonymanou.jcdecauxcycles.model.Contract
@@ -50,6 +51,12 @@ class StationListFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         station_list.layoutManager = LinearLayoutManager(activity)
         station_list.adapter = adapter
+
+        adapter.setOnStationClickListener(object: StationAdapter.OnStationClickListener {
+            override fun onStationClicked(station: Station) {
+                (activity as MainActivity).displayStationDetails(station.number, station.contractName)
+            }
+        })
 
         displayContract()
         refreshData()

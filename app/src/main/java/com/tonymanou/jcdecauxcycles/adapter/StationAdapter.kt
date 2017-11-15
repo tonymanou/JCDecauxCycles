@@ -11,6 +11,7 @@ import com.tonymanou.jcdecauxcycles.model.Station
 class StationAdapter : RecyclerView.Adapter<StationAdapter.ContractHolder>() {
 
     private val stationList = ArrayList<Station>()
+    private var clickListener: OnStationClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContractHolder {
         val view = LayoutInflater.from(parent.context)
@@ -34,12 +35,22 @@ class StationAdapter : RecyclerView.Adapter<StationAdapter.ContractHolder>() {
         notifyDataSetChanged()
     }
 
-    class ContractHolder(view: View) : RecyclerView.ViewHolder(view) {
+    fun setOnStationClickListener(listener: OnStationClickListener?) {
+        clickListener = listener
+    }
+
+    interface OnStationClickListener {
+
+        fun onStationClicked(station: Station)
+    }
+
+    inner class ContractHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val name : TextView = view.findViewById(R.id.station_name)
         private val address : TextView = view.findViewById(R.id.station_address)
 
         internal fun bind(station: Station) {
+            itemView.setOnClickListener { clickListener?.onStationClicked(station) }
             name.text = station.name
             address.text = station.address
         }

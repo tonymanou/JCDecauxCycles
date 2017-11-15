@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.tonymanou.jcdecauxcycles.MainActivity
 import com.tonymanou.jcdecauxcycles.R
 import com.tonymanou.jcdecauxcycles.adapter.ContractAdapter
 import com.tonymanou.jcdecauxcycles.model.Contract
@@ -36,6 +37,12 @@ class ContractListFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         contract_list.layoutManager = LinearLayoutManager(activity)
         contract_list.adapter = adapter
+
+        adapter.setOnContractClickListener(object: ContractAdapter.OnContractClickListener {
+            override fun onContractClicked(contract: Contract) {
+                (activity as MainActivity).displayStationList(contract)
+            }
+        })
 
         refreshData()
     }

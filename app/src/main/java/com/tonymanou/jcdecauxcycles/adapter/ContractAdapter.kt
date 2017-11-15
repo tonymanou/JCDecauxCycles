@@ -11,6 +11,7 @@ import com.tonymanou.jcdecauxcycles.model.Contract
 class ContractAdapter : RecyclerView.Adapter<ContractAdapter.ContractHolder>() {
 
     private val contractList = ArrayList<Contract>()
+    private var clickListener: OnContractClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContractHolder {
         val view = LayoutInflater.from(parent.context)
@@ -34,13 +35,23 @@ class ContractAdapter : RecyclerView.Adapter<ContractAdapter.ContractHolder>() {
         notifyDataSetChanged()
     }
 
-    class ContractHolder(view: View) : RecyclerView.ViewHolder(view) {
+    fun setOnContractClickListener(listener: OnContractClickListener?) {
+        clickListener = listener
+    }
+
+    interface OnContractClickListener {
+
+        fun onContractClicked(contract: Contract)
+    }
+
+    inner class ContractHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val name : TextView = view.findViewById(R.id.contract_name)
         private val country : TextView = view.findViewById(R.id.contract_country)
         private val cities : TextView = view.findViewById(R.id.contract_cities)
 
         internal fun bind(contract: Contract) {
+            itemView.setOnClickListener { clickListener?.onContractClicked(contract) }
             name.text = contract.commercialName
             country.text = contract.countryCode
             cities.text = contract.cities.joinToString(", ")

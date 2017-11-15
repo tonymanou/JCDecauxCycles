@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         showFragment(fragment)
     }
 
-    private fun displayStationList(contract: Contract) {
+    fun displayStationList(contract: Contract) {
         val bundle = Bundle()
         bundle.putParcelable(StationListFragment.EXTRA_CONTRACT, contract)
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         showFragment(fragment)
     }
 
-    private fun displayStationDetails(stationNumber: Int, contractName: String) {
+    fun displayStationDetails(stationNumber: Int, contractName: String) {
         val bundle = Bundle()
         bundle.putInt(StationDetailsFragment.EXTRA_STATION_ID, stationNumber)
         bundle.putString(StationDetailsFragment.EXTRA_CONTRACT_NAME, contractName)
