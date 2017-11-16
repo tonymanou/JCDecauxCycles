@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.tonymanou.jcdecauxcycles.R
 import com.tonymanou.jcdecauxcycles.model.Contract
+import kotlinx.android.synthetic.main.list_item_contract.view.*
 
 class ContractAdapter : RecyclerView.Adapter<ContractAdapter.ContractHolder>() {
 
@@ -46,9 +46,9 @@ class ContractAdapter : RecyclerView.Adapter<ContractAdapter.ContractHolder>() {
 
     inner class ContractHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val name : TextView = view.findViewById(R.id.contract_name)
-        private val country : TextView = view.findViewById(R.id.contract_country)
-        private val cities : TextView = view.findViewById(R.id.contract_cities)
+        private val name = view.contract_name
+        private val country = view.contract_country
+        private val cities = view.contract_cities
 
         internal fun bind(contract: Contract) {
             itemView.setOnClickListener { clickListener?.onContractClicked(contract) }

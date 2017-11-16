@@ -29,9 +29,7 @@ class StationDetailsFragment : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_station_details, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_station_details, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         refreshData()

@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.tonymanou.jcdecauxcycles.R
 import com.tonymanou.jcdecauxcycles.model.Station
+import kotlinx.android.synthetic.main.list_item_station.view.*
 
 class StationAdapter : RecyclerView.Adapter<StationAdapter.ContractHolder>() {
 
@@ -46,8 +46,8 @@ class StationAdapter : RecyclerView.Adapter<StationAdapter.ContractHolder>() {
 
     inner class ContractHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val name : TextView = view.findViewById(R.id.station_name)
-        private val address : TextView = view.findViewById(R.id.station_address)
+        private val name = view.station_name
+        private val address = view.station_address
 
         internal fun bind(station: Station) {
             itemView.setOnClickListener { clickListener?.onStationClicked(station) }
