@@ -15,6 +15,8 @@ import com.tonymanou.jcdecauxcycles.utils.executeAsync
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_station_details.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class StationDetailsFragment : Fragment() {
 
@@ -92,7 +94,8 @@ class StationDetailsFragment : Fragment() {
         station_bike_stands.text = station.bikeStands.toString()
         station_available_bike_stands.text = station.availableBikeStands.toString()
         station_available_bikes.text = station.availableBikes.toString()
-        station_last_update.text = station.lastUpdate.toString()
+        station_last_update.text = SimpleDateFormat.getDateTimeInstance()
+                .format(Date(station.lastUpdate))
     }
 
     private fun displayError(message: String, e: Throwable? = null) {
