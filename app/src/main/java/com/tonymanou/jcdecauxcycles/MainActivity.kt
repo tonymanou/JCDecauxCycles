@@ -1,7 +1,6 @@
 package com.tonymanou.jcdecauxcycles
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.tonymanou.jcdecauxcycles.model.Contract
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState, outPersistentState)
         outState.putBoolean(EXTRA_ALREADY_LAUNCHED, true)
     }
