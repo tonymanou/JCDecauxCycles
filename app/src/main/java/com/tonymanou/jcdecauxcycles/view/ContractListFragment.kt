@@ -38,6 +38,8 @@ class ContractListFragment : Fragment() {
         contract_list.layoutManager = LinearLayoutManager(activity)
         contract_list.adapter = adapter
 
+        refresh_swipe.setOnRefreshListener { refreshData() }
+
         adapter.setOnContractClickListener(object : ContractAdapter.OnContractClickListener {
             override fun onContractClicked(contract: Contract) {
                 (activity as MainActivity).displayStationList(contract)
@@ -51,6 +53,7 @@ class ContractListFragment : Fragment() {
         CyclesService.getContracts()
                 .executeAsync(object : Observer<Collection<Contract>> {
                     override fun onSubscribe(d: Disposable) {
+                        refresh_swipe.isRefreshing = true
                         adapter.setContracts()
                     }
 
@@ -59,10 +62,11 @@ class ContractListFragment : Fragment() {
                     }
 
                     override fun onComplete() {
-                        // Nothing to do
+                        refresh_swipe.isRefreshing = false
                     }
 
                     override fun onError(e: Throwable) {
+                        refresh_swipe.isRefreshing = false
                         displayError("Unable to load station list", e)
                     }
                 })

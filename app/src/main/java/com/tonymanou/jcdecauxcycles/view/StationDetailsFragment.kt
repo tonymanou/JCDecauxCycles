@@ -43,6 +43,8 @@ class StationDetailsFragment : Fragment() {
     ): View? = inflater.inflate(R.layout.fragment_station_details, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        refresh_swipe.setOnRefreshListener { refreshData() }
+
         refreshData()
     }
 
@@ -57,6 +59,7 @@ class StationDetailsFragment : Fragment() {
         CyclesService.getStationDetails(stationId, contractName)
                 .executeAsync(object : Observer<Station> {
                     override fun onSubscribe(d: Disposable) {
+                        refresh_swipe.isRefreshing = true
                         resetFields(getString(R.string.placeholder))
                     }
 
@@ -65,10 +68,11 @@ class StationDetailsFragment : Fragment() {
                     }
 
                     override fun onComplete() {
-                        // Nothing to do
+                        refresh_swipe.isRefreshing = false
                     }
 
                     override fun onError(e: Throwable) {
+                        refresh_swipe.isRefreshing = false
                         displayError("Unable to load station details", e)
                     }
                 })

@@ -58,6 +58,8 @@ class StationListFragment : Fragment() {
         station_list.layoutManager = LinearLayoutManager(activity)
         station_list.adapter = adapter
 
+        refresh_swipe.setOnRefreshListener { refreshData() }
+
         adapter.setOnStationClickListener(object : StationAdapter.OnStationClickListener {
             override fun onStationClicked(station: Station) {
                 (activity as MainActivity).displayStationDetails(station.number,
@@ -82,6 +84,7 @@ class StationListFragment : Fragment() {
         CyclesService.getStationsForContract(contract.name)
                 .executeAsync(object : Observer<Collection<Station>> {
                     override fun onSubscribe(d: Disposable) {
+                        refresh_swipe.isRefreshing = true
                         adapter.setStations()
                     }
 
@@ -90,10 +93,11 @@ class StationListFragment : Fragment() {
                     }
 
                     override fun onComplete() {
-                        // Nothing to do
+                        refresh_swipe.isRefreshing = false
                     }
 
                     override fun onError(e: Throwable) {
+                        refresh_swipe.isRefreshing = false
                         displayError("Unable to load station list", e)
                     }
                 })

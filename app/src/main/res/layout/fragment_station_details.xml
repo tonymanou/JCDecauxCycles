@@ -1,142 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh_swipe"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:contentPadding="8dp">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <GridLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:columnCount="2"
-                android:useDefaultMargins="true">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:contentPadding="8dp">
 
-                <TextView
-                    style="@style/DetailsSubhead"
-                    android:layout_columnSpan="2"
-                    android:text="@string/station_static_details_title" />
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:useDefaultMargins="true">
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_static_details_name" />
+                    <TextView
+                        style="@style/DetailsSubhead"
+                        android:layout_columnSpan="2"
+                        android:text="@string/station_static_details_title" />
 
-                <TextView
-                    android:id="@+id/station_name"
-                    android:lines="1"
-                    tools:text="Station 42" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_static_details_name" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_static_details_number" />
+                    <TextView
+                        android:id="@+id/station_name"
+                        android:lines="1"
+                        tools:text="Station 42" />
 
-                <TextView
-                    android:id="@+id/station_number"
-                    tools:text="42" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_static_details_number" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_static_details_address" />
+                    <TextView
+                        android:id="@+id/station_number"
+                        tools:text="42" />
 
-                <TextView
-                    android:id="@+id/station_address"
-                    tools:text="5 avenue de la Corniche\n75025 Paris" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_static_details_address" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_static_details_position" />
+                    <TextView
+                        android:id="@+id/station_address"
+                        tools:text="5 avenue de la Corniche\n75025 Paris" />
 
-                <TextView
-                    android:id="@+id/station_position"
-                    tools:text="(-5.002 ; 4.232)" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_static_details_position" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_static_details_contract" />
+                    <TextView
+                        android:id="@+id/station_position"
+                        tools:text="(-5.002 ; 4.232)" />
 
-                <TextView
-                    android:id="@+id/station_contract"
-                    tools:text="Contract name" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_static_details_contract" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_static_details_bonus" />
+                    <TextView
+                        android:id="@+id/station_contract"
+                        tools:text="Contract name" />
 
-                <TextView
-                    android:id="@+id/station_bonus"
-                    tools:text="yes" />
-            </GridLayout>
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_static_details_bonus" />
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:contentPadding="8dp">
+                    <TextView
+                        android:id="@+id/station_bonus"
+                        tools:text="yes" />
+                </GridLayout>
+            </android.support.v7.widget.CardView>
 
-            <GridLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:columnCount="2"
-                android:useDefaultMargins="true">
+                android:layout_height="wrap_content"
+                app:contentPadding="8dp">
 
-                <TextView
-                    style="@style/DetailsSubhead"
-                    android:layout_columnSpan="2"
-                    android:text="@string/station_dynamic_details_title" />
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:useDefaultMargins="true">
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_dynamic_details_status" />
+                    <TextView
+                        style="@style/DetailsSubhead"
+                        android:layout_columnSpan="2"
+                        android:text="@string/station_dynamic_details_title" />
 
-                <TextView
-                    android:id="@+id/station_status"
-                    tools:text="closed" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_dynamic_details_status" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_dynamic_details_bike_stands" />
+                    <TextView
+                        android:id="@+id/station_status"
+                        tools:text="closed" />
 
-                <TextView
-                    android:id="@+id/station_bike_stands"
-                    tools:text="20" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_dynamic_details_bike_stands" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_dynamic_details_available_stands" />
+                    <TextView
+                        android:id="@+id/station_bike_stands"
+                        tools:text="20" />
 
-                <TextView
-                    android:id="@+id/station_available_bike_stands"
-                    tools:text="10" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_dynamic_details_available_stands" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_dynamic_details_available_bikes" />
+                    <TextView
+                        android:id="@+id/station_available_bike_stands"
+                        tools:text="10" />
 
-                <TextView
-                    android:id="@+id/station_available_bikes"
-                    tools:text="9" />
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_dynamic_details_available_bikes" />
 
-                <TextView
-                    style="@style/DetailsItemTitle"
-                    android:text="@string/station_dynamic_details_last_update" />
+                    <TextView
+                        android:id="@+id/station_available_bikes"
+                        tools:text="9" />
 
-                <TextView
-                    android:id="@+id/station_last_update"
-                    tools:text="156165115415" />
-            </GridLayout>
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
+                    <TextView
+                        style="@style/DetailsItemTitle"
+                        android:text="@string/station_dynamic_details_last_update" />
 
-</ScrollView>
+                    <TextView
+                        android:id="@+id/station_last_update"
+                        tools:text="156165115415" />
+                </GridLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.v4.widget.SwipeRefreshLayout>
