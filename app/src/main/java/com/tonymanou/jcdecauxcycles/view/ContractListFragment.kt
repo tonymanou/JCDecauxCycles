@@ -22,6 +22,8 @@ class ContractListFragment : Fragment() {
 
     companion object {
         private const val TAG = "ContractList"
+
+        fun create(): ContractListFragment = ContractListFragment()
     }
 
     private val adapter = ContractAdapter()

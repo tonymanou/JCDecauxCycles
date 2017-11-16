@@ -23,9 +23,17 @@ import kotlinx.android.synthetic.main.list_item_contract.*
 class StationListFragment : Fragment() {
 
     companion object {
-        const val EXTRA_CONTRACT = "contract"
-
+        private const val BUNDLE_CONTRACT = "stationList:contract"
         private const val TAG = "StationList"
+
+        fun create(contract: Contract): StationListFragment {
+            val bundle = Bundle()
+            bundle.putParcelable(StationListFragment.BUNDLE_CONTRACT, contract)
+
+            val fragment = StationListFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 
     private val adapter = StationAdapter()
@@ -34,7 +42,7 @@ class StationListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        contract = arguments?.getParcelable(EXTRA_CONTRACT)
+        contract = arguments?.getParcelable(BUNDLE_CONTRACT)
         if (contract == null) {
             displayError("Missing fragment argument")
         }

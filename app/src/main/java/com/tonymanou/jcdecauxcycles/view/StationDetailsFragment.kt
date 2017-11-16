@@ -21,10 +21,19 @@ import java.util.*
 class StationDetailsFragment : Fragment() {
 
     companion object {
-        const val EXTRA_STATION_ID = "stationId"
-        const val EXTRA_CONTRACT_NAME = "contractName"
-
+        private const val BUNDLE_STATION_ID = "details:stationId"
+        private const val BUNDLE_CONTRACT_NAME = "details:contractName"
         private const val TAG = "StationDetails"
+
+        fun create(stationNumber: Int, contractName: String): StationDetailsFragment {
+            val bundle = Bundle()
+            bundle.putInt(StationDetailsFragment.BUNDLE_STATION_ID, stationNumber)
+            bundle.putString(StationDetailsFragment.BUNDLE_CONTRACT_NAME, contractName)
+
+            val fragment = StationDetailsFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 
     override fun onCreateView(
@@ -38,8 +47,8 @@ class StationDetailsFragment : Fragment() {
     }
 
     private fun refreshData() {
-        val stationId = arguments?.getInt(EXTRA_STATION_ID)
-        val contractName = arguments?.getString(EXTRA_CONTRACT_NAME)
+        val stationId = arguments?.getInt(BUNDLE_STATION_ID)
+        val contractName = arguments?.getString(BUNDLE_CONTRACT_NAME)
         if (stationId == null || contractName == null) {
             displayError("Missing fragment arguments")
             return
