@@ -50,9 +50,10 @@ class StationListFragment : Fragment() {
         station_list.layoutManager = LinearLayoutManager(activity)
         station_list.adapter = adapter
 
-        adapter.setOnStationClickListener(object: StationAdapter.OnStationClickListener {
+        adapter.setOnStationClickListener(object : StationAdapter.OnStationClickListener {
             override fun onStationClicked(station: Station) {
-                (activity as MainActivity).displayStationDetails(station.number, station.contractName)
+                (activity as MainActivity).displayStationDetails(station.number,
+                        station.contractName)
             }
         })
 

@@ -36,7 +36,7 @@ class ContractListFragment : Fragment() {
         contract_list.layoutManager = LinearLayoutManager(activity)
         contract_list.adapter = adapter
 
-        adapter.setOnContractClickListener(object: ContractAdapter.OnContractClickListener {
+        adapter.setOnContractClickListener(object : ContractAdapter.OnContractClickListener {
             override fun onContractClicked(contract: Contract) {
                 (activity as MainActivity).displayStationList(contract)
             }
